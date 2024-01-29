@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
+@import url("https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css");
+.hexagon {
+  @apply w-[90px] h-[50px] relative before:content-[''] before:absolute before:top-[-25px] before:border-b-[25px] before:border-b-[#06C2C9] before:border-x-[45px] before:border-x-transparent before:border-solid after:content-[''] after:absolute after:bottom-[-25px] after:border-t-[25px] after:border-t-[#06C2C9] after:border-x-[45px] after:border-x-transparent after:border-solid;
+  background: #06c2c9;
+  transform: rotate(90deg);
+}
+/* .hexagon-transparent {
+  @apply w-[90px] h-[50px] relative before:content-[''] before:absolute before:top-[-25px] before:border-b-[25px] before:border-b-transparent before:border-x-[45px] before:border-x-transparent before:border-solid after:content-[''] after:absolute after:bottom-[-25px] after:border-t-[25px] after:border-t-transparent after:border-x-[45px] after:border-x-transparent after:border-solid;
+  background: transparent;
+} */
+/* .hexagon-container {
+  position: relative;
+  width: 150px; 
+  height: 86.6px; 
+  overflow: hidden;
+  transform: rotate(90deg);
+} */
+
+/* .hexagon-image {
+  transform: rotate(90deg);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+} */
+.hexagon-container {
+  width: 200px; /* Adjust the size as needed */
+  height: 200px; /* Adjust the size as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hexagonpic {
+  position: relative;
+  width: 100%;
+  padding-bottom: 115.47%; /* Set the aspect ratio for a regular hexagon */
+}
+
+.hexagon-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}

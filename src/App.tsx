@@ -3,6 +3,8 @@ import homeImg from "../src/assets/home-background.jpg";
 
 import "./App.css";
 import NavBar from "./components/NavBar";
+import About from "./components/About";
+import Projects from "./components/Projects";
 
 function App() {
   const [clickData, setClickData] = useState(false);
@@ -24,6 +26,9 @@ function App() {
         </div>
       </div> */}
       {/* {clickData && <NavBar />} */}
+      <NavBar />
+      <About />
+      <Projects />
     </div>
   );
 }

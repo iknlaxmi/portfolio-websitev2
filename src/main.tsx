@@ -9,17 +9,17 @@ import NavBar from "./components/NavBar.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <NavBar />,
+    element: <App />,
   },
-  {
-    path: "/about",
-    element: <About />,
-  },
+  // {
+  //   path: "/about",
+  //   element: <About />,
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    <App />
+    {/* <App /> */}
   </React.StrictMode>
 );

@@ -1,8 +1,127 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { isMobile, isDesktop, isTablet } from "react-device-detect";
 
 const NavBar = () => {
   const [isCollapsed, setCollapsed] = useState(true);
+  const [isHome, setIsHome] = useState(false);
+  const [isAbout, setIsAbout] = useState(false);
+  const [isPortfolio, setIsPortfolio] = useState(false);
+  const [isContact, setIsContact] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      console.log("Modile is", isDesktop);
+
+      if (offset > 900) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+      if (isDesktop) {
+        if (offset > 0 && offset < 867) {
+          setIsHome(true);
+          setIsAbout(false);
+          setIsPortfolio(false);
+          setIsContact(false);
+        } else if (offset >= 867 && offset < 1738) {
+          setIsHome(false);
+          setIsAbout(true);
+          setIsPortfolio(false);
+          setIsContact(false);
+        } else if (offset >= 1738 && offset < 2662) {
+          setIsHome(false);
+          setIsAbout(false);
+          setIsPortfolio(true);
+          setIsContact(false);
+        } else if (offset >= 2662) {
+          setIsHome(false);
+          setIsAbout(false);
+          setIsPortfolio(false);
+          setIsContact(true);
+        }
+      }
+      if (isTablet) {
+        if (offset > 0 && offset < 560) {
+          setIsHome(true);
+          setIsAbout(false);
+          setIsPortfolio(false);
+          setIsContact(false);
+        } else if (offset >= 560 && offset < 1320) {
+          setIsHome(false);
+          setIsAbout(true);
+          setIsPortfolio(false);
+          setIsContact(false);
+        } else if (offset >= 1320 && offset < 2000) {
+          setIsHome(false);
+          setIsAbout(false);
+          setIsPortfolio(true);
+          setIsContact(false);
+        } else if (offset >= 2000) {
+          setIsHome(false);
+          setIsAbout(false);
+          setIsPortfolio(false);
+          setIsContact(true);
+        }
+      }
+      if (isMobile) {
+        if (offset > 0 && offset < 644) {
+          setIsHome(true);
+          setIsAbout(false);
+          setIsPortfolio(false);
+          setIsContact(false);
+        } else if (offset >= 644 && offset < 2355) {
+          setIsHome(false);
+          setIsAbout(true);
+          setIsPortfolio(false);
+          setIsContact(false);
+        } else if (offset >= 2355 && offset < 3795) {
+          setIsHome(false);
+          setIsAbout(false);
+          setIsPortfolio(true);
+          setIsContact(false);
+        } else if (offset >= 3795) {
+          setIsHome(false);
+          setIsAbout(false);
+          setIsPortfolio(false);
+          setIsContact(true);
+        }
+      }
+
+      console.log("data isss", offset);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleHome = () => {
+    setIsHome(true);
+    setIsAbout(false);
+    setIsPortfolio(false);
+    setIsContact(false);
+  };
+  const handleAbout = () => {
+    setIsHome(false);
+    setIsAbout(true);
+    setIsPortfolio(false);
+    setIsContact(false);
+  };
+  const handlePortfolio = () => {
+    setIsHome(false);
+    setIsAbout(false);
+    setIsPortfolio(true);
+    setIsContact(false);
+  };
+  const handleContact = () => {
+    setIsHome(false);
+    setIsAbout(false);
+    setIsPortfolio(false);
+    setIsContact(true);
+  };
 
   const toggleCollapse = () => {
     setCollapsed(!isCollapsed);
@@ -17,7 +136,12 @@ const NavBar = () => {
     //   </div>
     // </div>
     <div>
-      <nav className="bg-black text-white fixed z-10 w-full top-0">
+      <nav
+        id="nav123"
+        className={`bg-black text-white fixed z-10 w-full  border-b-4 border-[#06C2C9] + ${
+          isSticky ? "top-0" : "sticky"
+        }`}
+      >
         <div className="max-w-screen-xl flex flex-wrap items-center md:justify-start justify-between mx-auto p-4 ">
           <a
             href="https://flowbite.com/"
@@ -65,25 +189,54 @@ const NavBar = () => {
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4  md:flex-row md:flex md:space-x-8  md:mt-0 text-white">
               <li>
                 <a
-                  href="#"
-                  className="block py-2 px-3 text-white"
+                  href="#home"
+                  onClick={handleHome}
+                  className={`block py-2 px-3 ${
+                    isHome === true
+                      ? "text-white visited:text-[#A02458]"
+                      : "text-white"
+                  }`}
                   aria-current="page"
                 >
                   HOME
                 </a>
               </li>
               <li>
-                <a href="#" className="block py-2 px-3 text-white ">
+                <a
+                  href="#about"
+                  onClick={handleAbout}
+                  className={`block py-2 px-3 ${
+                    isAbout === true
+                      ? "text-white visited:text-[#A02458]"
+                      : "text-white"
+                  }`}
+                >
                   ABOUT
                 </a>
               </li>
               <li>
-                <a href="#" className="block py-2 px-3 text-white ">
+                <a
+                  href="#projects"
+                  onClick={handlePortfolio}
+                  className={`block py-2 px-3 ${
+                    isPortfolio === true
+                      ? "text-white visited:text-[#A02458]"
+                      : "text-white"
+                  }`}
+                >
                   PORTFOLIO
                 </a>
               </li>
               <li>
-                <a href="#" className="block py-2 px-3 text-white ">
+                <a
+                  href="#contact"
+                  onClick={handleContact}
+                  className={`block py-2 px-3 ${
+                    isContact === true
+                      ? "text-white visited:text-[#A02458]"
+                      : "text-white"
+                  }`}
+                >
                   CONTACT
                 </a>
               </li>

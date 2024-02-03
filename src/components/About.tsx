@@ -1,5 +1,3 @@
-import React from "react";
-// import iconApp from "../assets/";
 const experience_data = [
   {
     icon: "/src/assets/web-design.png",
@@ -24,7 +22,7 @@ const experience_data = [
       "Ideating component structures to align styles with organization standards",
   },
 ];
-const data1 = 32;
+
 const skills_data = [
   {
     id: 1,
@@ -70,7 +68,7 @@ const skills_data = [
 
 const About = () => {
   return (
-    <div>
+    <div id="about">
       <div className="-ml-12">
         <h1 className="text-5xl md:text-4xl text-center mt-20 mb-2">ABOUT</h1>
         <hr className="w-[60px]  border-[#20311A] border-2 m-auto" />
